@@ -1,0 +1,19 @@
+---
+metadata:
+  name: "Alibaba Cloud OSS bucket accessible to public"
+  id: "CKV2_ALI_1"
+  category: "GENERAL_SECURITY"
+definition:
+  and:
+  - cond_type: "attribute"
+    resource_types:
+    - "alicloud_oss_bucket"
+    attribute: "acl"
+    operator: "not_equals"
+    value: "public-read"
+  - cond_type: "attribute"
+    resource_types:
+    - "alicloud_oss_bucket"
+    attribute: "acl"
+    operator: "not_equals"
+    value: "public-read-write"

@@ -1,0 +1,13 @@
+---
+metadata:
+  name: "Alibaba Cloud SLB listener that allow connection requests over HTTP"
+  id: "CKV2_ALI_5"
+  category: "NETWORKING"
+definition:
+  and:
+  - cond_type: "attribute"
+    resource_types:
+    - "alicloud_slb_listener"
+    attribute: "protocol"
+    operator: "equals"
+    value: "https"

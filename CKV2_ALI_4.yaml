@@ -1,0 +1,31 @@
+---
+metadata:
+  name: "Alibaba Cloud SLB listener is configured with SSL policy having TLS version 1.1 or lower"
+  id: "CKV2_ALI_4"
+  category: "NETWORKING"
+definition:
+  or:
+  - cond_type: "attribute"
+    resource_types:
+    - "alicloud_slb_listener"
+    attribute: "protocol"
+    operator: "not_equals"
+    value: "https"
+  - and:
+    - cond_type: "attribute"
+      resource_types:
+      - "alicloud_slb_listener"
+      attribute: "tls_cipher_policy"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types:
+      - "alicloud_slb_listener"
+      attribute: "tls_cipher_policy"
+      operator: "not_equals"
+      value: "tls_cipher_policy_1_0"
+    - cond_type: "attribute"
+      resource_types:
+      - "alicloud_slb_listener"
+      attribute: "tls_cipher_policy"
+      operator: "not_equals"
+      value: "tls_cipher_policy_1_1"

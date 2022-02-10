@@ -1,0 +1,25 @@
+---
+metadata:
+  name: "Alibaba Cloud OSS bucket server-side encryption is disabled"
+  id: "CKV2_ALI_2"
+  category: "GENERAL_SECURITY"
+definition:
+  and:
+  - cond_type: "attribute"
+    resource_types:
+    - "alicloud_oss_bucket"
+    attribute: "server_side_encryption_rule"
+    operator: "exists"
+  - or:
+    - cond_type: "attribute"
+      resource_types:
+      - "alicloud_oss_bucket"
+      attribute: "server_side_encryption_rule.sse_algorithm"
+      operator: "equals"
+      value: "AES256"
+    - cond_type: "attribute"
+      resource_types:
+      - "alicloud_oss_bucket"
+      attribute: "server_side_encryption_rule.sse_algorithm"
+      operator: "equals"
+      value: "KMS"

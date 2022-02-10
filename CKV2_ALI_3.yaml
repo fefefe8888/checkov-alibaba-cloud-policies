@@ -1,0 +1,18 @@
+---
+metadata:
+  name: "Alibaba Cloud SLB delete protection is disabled"
+  id: "CKV2_ALI_3"
+  category: "NETWORKING"
+definition:
+  and:
+  - cond_type: "attribute"
+    resource_types:
+    - "alicloud_slb"
+    attribute: "delete_protection"
+    operator: "exists"
+  - cond_type: "attribute"
+    resource_types:
+    - "alicloud_slb"
+    attribute: "delete_protection"
+    operator: "equals"
+    value: "on"
